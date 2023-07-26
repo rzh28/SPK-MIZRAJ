@@ -52,7 +52,9 @@
             @yield('content')
 
             <footer class="footer text-left">
-                MUHAMMAD RIZKY AKBAR 1670231060
+                MIZRAJ KURNIAWAN 1670231.....
+                <br>
+                FAKULTAS TEKNIK INFORMATIKA
                 <br>
                 UNIVERSITAS KRISNADWIPAYANA {{ date('Y') }}
             </footer>
