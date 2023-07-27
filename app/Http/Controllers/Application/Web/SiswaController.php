@@ -51,6 +51,7 @@ class SiswaController extends Controller
         $this->validate($request, [
             'photos',
             'nama',
+            'nisn',
             'jenis_kelamin',
             'tempat_lahir',
             'tanggal_lahir',
@@ -70,6 +71,7 @@ class SiswaController extends Controller
 
         $siswas = new Siswa;
         $siswas->nama = $request->nama;
+        $siswas->nisn = $request->nisn;
         $siswas->jenis_kelamin = $request->jenis_kelamin;
         $siswas->tempat_lahir = $request->tempat_lahir;
         $siswas->tanggal_lahir = $request->tanggal_lahir;
@@ -160,6 +162,7 @@ class SiswaController extends Controller
 
         $siswas = Siswa::where('id', $id)->first();
         $siswas->nama = $request->nama;
+        $siswas->nisn = $request->nisn;
         $siswas->jenis_kelamin = $request->jenis_kelamin;
         $siswas->tempat_lahir = $request->tempat_lahir;
         $siswas->tanggal_lahir = $request->tanggal_lahir;

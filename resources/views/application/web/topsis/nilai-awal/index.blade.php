@@ -150,7 +150,9 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
+                                        <th scope="col">Nomor Induk Siswa Nasional</th>
                                         <th scope="col">Nama Siswa</th>
+                                        <th scope="col">Kelas</th>
                                         @foreach ($kriterias as $kriteria)
                                             <th scope="col">{{ $kriteria->name }}</th>
                                         @endforeach
@@ -161,7 +163,9 @@
                                         @foreach ($siswas as $key => $siswa)
                                             <tr>
                                                 <th scope="row">{{ $key + 1 }}</th>
+                                                <td>{{ $siswa->nisn }}</td>
                                                 <td>{{ $siswa->nama }}</td>
+                                                <td>{{ $siswa->kelas }}</td>
 
                                                 @foreach ($siswa->penilaian as $penilaian)
                                                     @if ($penilaian['nilai_awal'])
@@ -191,7 +195,9 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
+                                        <th scope="col">Nomor Induk Siswa Nasional</th>
                                         <th scope="col">Nama Siswa</th>
+                                        <th scope="col">Kelas</th>
 
                                         @foreach ($kriterias as $kriteria)
                                             <th scope="col">{{ $kriteria->name }}</th>
@@ -205,7 +211,9 @@
                                             @if (!empty($penilaian))
                                                 <tr>
                                                     <th scope="row">{{ $key + 1 }}</th>
+                                                    <td>{{ $siswa->nisn }}</td>
                                                     <td>{{ $siswa->nama }}</td>
+                                                    <td>{{ $siswa->kelas }}</td>
 
                                                     @foreach ($siswa->penilaian as $penilaian)
                                                         @if ($penilaian['inisialisasi'])

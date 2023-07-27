@@ -69,8 +69,10 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Kelas Siswa</th>
+                                        <th>Photo Siswa</th>
+                                        <th>Nomor Induk Siswa Nasional</th>
                                         <th>Nama Siswa</th>
+                                        <th>Kelas Siswa</th>
                                         <th>Tempat, Tanggal Lahir</th>
                                         <th>Agama</th>
                                         <th>Jenis Kelamin</th>
@@ -81,8 +83,7 @@
                                     @foreach ($siswas as $index => $siswa)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $siswa->kelas }}</td>
-                                            {{-- <td>
+                                            <td>
                                                 @if ($siswa->photos != null)
                                                     <img src=" {{ asset('images/' . $siswa->photos) }}" alt=""
                                                         style=" width:50px; height:50px; border-radius:100%;">
@@ -90,11 +91,16 @@
                                                     <img src="http://placehold.it/50x50" alt="img-broker"
                                                         style="border-radius:100%;">
                                                 @endif
-                                            </td> --}}
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.siswa.edit', $siswa->id) }}">
+                                                    {{ $siswa->nisn }} </a>
+                                            </td>
                                             <td>
                                                 <a href="{{ route('admin.siswa.edit', $siswa->id) }}">
                                                     {{ $siswa->nama }} </a>
                                             </td>
+                                            <td>{{ $siswa->kelas }}</td>
                                             <td>{{ $siswa->tempat_lahir }},
                                                 {{-- {{ date('d-m-y', strtotime($siswa->tanggal_lahir)) }} --}}
                                                 {{ \Carbon\Carbon::parse($siswa->tanggal_lahir)->format('d/m/Y') }}

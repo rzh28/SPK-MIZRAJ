@@ -52,7 +52,7 @@
             @yield('content')
 
             <footer class="footer text-left">
-                MIZRAJ KURNIAWAN 1670231.....
+                MIZRAJ KURNIAWAN 1670231049
                 <br>
                 FAKULTAS TEKNIK INFORMATIKA
                 <br>

@@ -68,15 +68,15 @@ class TopsisController extends Controller
                     }
                 // kriteria 2 = tanggungan orang tua
                 } else if ($request->kriteria_id == 2) {
-                    if ($request->nilai_awal >= 5) {
+                    if ($request->nilai >= 5) {
                         $inisialisasi = 5;
-                    } elseif ($request->nilai_awal >= 4 && $request->nilai_awal <= 4) {
+                    } elseif ($request->nilai >= 4 && $request->nilai <= 4) {
                         $inisialisasi = 4;
-                    } elseif ($request->nilai_awal >= 2 && $request->nilai_awal <= 3) {
+                    } elseif ($request->nilai >= 2 && $request->nilai <= 3) {
                         $inisialisasi = 3;
-                    } elseif ($request->nilai_awal >= 1 && $request->nilai_awal <= 2) {
+                    } elseif ($request->nilai >= 1 && $request->nilai <= 2) {
                         $inisialisasi = 2;
-                    } elseif ($request->nilai_awal <= 1) {
+                    } elseif ($request->nilai <= 1) {
                         $inisialisasi = 1;
                     }else{
                          return redirect()
@@ -137,75 +137,75 @@ class TopsisController extends Controller
 
     public function editPenilaianAwal($id)
     {
-        $karyawans = Siswa::get();
+        $siswas = Siswa::get();
         $kriterias = Kriteria::get();
 
         $penilaians = TopsisInisial::where('id', $id)->first();
         return view('application.web.topsis.nilai-awal.edit', [
             'penilaians' => $penilaians,
-            'karyawans' => $karyawans,
+            'siswas' => $siswas,
             'kriterias' => $kriterias
         ]);
     }
 
-    public function updatePenilaianAwal(Request $request, $id)
-    {
-        $checkExist = TopsisInisial::where('siswa_id', $request->siswa_id)
-            ->where('criteria_id', $request->criteria_id)->first();
+    // public function updatePenilaianAwal(Request $request, $id)
+    // {
+    //     $checkExist = TopsisInisial::where('siswa_id', $request->siswa_id)
+    //         ->where('criteria_id', $request->criteria_id)->first();
 
 
-        if (!empty($checkExist)) {
-            $topsesInisial = TopsisInisial::where('id', $id)->first();
+    //     if (!empty($checkExist)) {
+    //         $topsesInisial = TopsisInisial::where('id', $id)->first();
 
-            if ($request->kriteria_id == 1 || $request->kriteria_id == 4) {
-                if ($request->nilai_awal >= 1 && $request->nilai_awal <= 6) {
-                    $inisialisasi = 1;
-                } elseif ($request->nilai_awal >= 7 && $request->nilai_awal <= 13) {
-                    $inisialisasi = 2;
-                } elseif ($request->nilai_awal >= 14 && $request->nilai_awal <= 20) {
-                    $inisialisasi = 3;
-                }
-            } elseif ($request->kriteria_id == 2 || $request->kriteria_id == 3) {
-                if ($request->nilai_awal >= 1 && $request->nilai_awal <= 10) {
-                    $inisialisasi = 1;
-                } elseif ($request->nilai_awal >= 11 && $request->nilai_awal <= 20) {
-                    $inisialisasi = 2;
-                } elseif ($request->nilai_awal >= 21 && $request->nilai_awal <= 30) {
-                    $inisialisasi = 3;
-                }
-            }
+    //         if ($request->kriteria_id == 1 || $request->kriteria_id == 4) {
+    //             if ($request->nilai_awal >= 1 && $request->nilai_awal <= 6) {
+    //                 $inisialisasi = 1;
+    //             } elseif ($request->nilai_awal >= 7 && $request->nilai_awal <= 13) {
+    //                 $inisialisasi = 2;
+    //             } elseif ($request->nilai_awal >= 14 && $request->nilai_awal <= 20) {
+    //                 $inisialisasi = 3;
+    //             }
+    //         } elseif ($request->kriteria_id == 2 || $request->kriteria_id == 3) {
+    //             if ($request->nilai_awal >= 1 && $request->nilai_awal <= 10) {
+    //                 $inisialisasi = 1;
+    //             } elseif ($request->nilai_awal >= 11 && $request->nilai_awal <= 20) {
+    //                 $inisialisasi = 2;
+    //             } elseif ($request->nilai_awal >= 21 && $request->nilai_awal <= 30) {
+    //                 $inisialisasi = 3;
+    //             }
+    //         }
 
-            $topsesInisial->nilai_awal = $request->nilai_awal;
-            $topsesInisial->inisialisasi = $inisialisasi;
-            $topsesInisial->siswa_id = $request->siswa_id;
-            $topsesInisial->kriteria_id = $request->kriteria_id;
+    //         $topsesInisial->nilai_awal = $request->nilai_awal;
+    //         $topsesInisial->inisialisasi = $inisialisasi;
+    //         $topsesInisial->siswa_id = $request->siswa_id;
+    //         $topsesInisial->kriteria_id = $request->kriteria_id;
 
-            DB::transaction(function () use ($topsesInisial) {
-                $topsesInisial->save();
-            }, 5);
+    //         DB::transaction(function () use ($topsesInisial) {
+    //             $topsesInisial->save();
+    //         }, 5);
 
-            return redirect()
-                ->route('admin.penilaianAwal')
-                ->with('success_message', 'data berahasil diubah');
-        }
-        return redirect()
-            ->back()
-            ->with('error_message', 'data sudah ada!');
-    }
+    //         return redirect()
+    //             ->route('admin.penilaianAwal')
+    //             ->with('success_message', 'data berahasil diubah');
+    //     }
+    //     return redirect()
+    //         ->back()
+    //         ->with('error_message', 'data sudah ada!');
+    // }
 
-    public function destroyPenilaianAwal($id)
-    {
-        $penilaians = TopsisInisial::where('id', $id)
-            ->first();
+    // public function destroyPenilaianAwal($id)
+    // {
+    //     $penilaians = TopsisInisial::where('id', $id)
+    //         ->first();
 
-        DB::transaction(function () use ($penilaians) {
-            $penilaians->delete();
-        }, 5);
+    //     DB::transaction(function () use ($penilaians) {
+    //         $penilaians->delete();
+    //     }, 5);
 
-        return redirect()
-            ->back()
-            ->with('success_message', 'data berahasil diubah');
-    }
+    //     return redirect()
+    //         ->back()
+    //         ->with('success_message', 'data berahasil diubah');
+    // }
     /*
     * ******************************************************  ****************************************************** *
     * ********************************* End - This Function For Beasiswa ********************************* *
@@ -220,51 +220,51 @@ class TopsisController extends Controller
 
     public function hasilNoramlasiasi()
     {
-        $karyawans = Siswa::get();
+        $siswas = Siswa::get();
         $kriterias = Kriteria::get();
         $normalisasis = TopsisNormalisasi::get();
 
         return view('application.web.topsis.perhitungan-topsis.1-normalisasi', [
             'kriterias' => $kriterias,
-            'karyawans' => $karyawans,
+            'siswas' => $siswas,
             'normalisasis' => $normalisasis,
         ]);
     }
 
     public function hasilPembobotan()
     {
-        $karyawans = Siswa::get();
+        $siswas = Siswa::get();
         $kriterias = Kriteria::get();
         $pembobotans = TopsisBobot::get();
         return view('application.web.topsis.perhitungan-topsis.2-bobot', [
             'kriterias' => $kriterias,
-            'karyawans' => $karyawans,
+            'siswas' => $siswas,
             'pembobotans' => $pembobotans
         ]);
     }
 
     public function hasilJarak()
     {
-        $karyawans = Siswa::get();
+        $siswas = Siswa::get();
         $kriterias = Kriteria::get();
         $jaraks = TopsisJarak::get();
 
         return view('application.web.topsis.perhitungan-topsis.4-jarak', [
             'kriterias' => $kriterias,
-            'karyawans' => $karyawans,
+            'siswas' => $siswas,
             'jaraks' => $jaraks
         ]);
     }
 
     public function hasilPreferensi()
     {
-        $karyawans = Siswa::get();
+        $siswas = Siswa::get();
         $kriterias = Kriteria::get();
         $preferensis = TopsisPreferensi::get();
 
         return view('application.web.topsis.perhitungan-topsis.5-prefrensi', [
             'kriterias' => $kriterias,
-            'karyawans' => $karyawans,
+            'siswas' => $siswas,
             'preferensis' => $preferensis,
         ]);
     }
@@ -304,7 +304,7 @@ class TopsisController extends Controller
                                 ->orWhere('inisial_id', '=' ,$inisial )
                                 ->first();
 
-        if ($isexist === null) {
+        if (!$isexist) {
             $criterias = Kriteria::all();
             foreach ($criterias as $criteria) {
                 $initialValue = 0;
@@ -358,11 +358,11 @@ class TopsisController extends Controller
 
         if (!$isexist) {
             //bobot
-            $karyawans = Siswa::all();
-            foreach ($karyawans as $karyawan) {
+            $siswas = Siswa::all();
+            foreach ($siswas as $siswa) {
                 $matrixNormalisasi = DB::table('topsis_normalisasis')
                     ->join('kriterias', 'topsis_normalisasis.kriteria_id', '=', 'kriterias.id')
-                    ->where('siswa_id', '=', $karyawan->id)
+                    ->where('siswa_id', '=', $siswa->id)
                     ->get();
                 foreach ($matrixNormalisasi as $normalisasi) {
                     $bobot = $normalisasi->weight / 100;
@@ -410,12 +410,12 @@ class TopsisController extends Controller
 
         if (!$isexist) {
 
-            $karyawans = Siswa::all();
-            foreach ($karyawans as $karyawan) {
+            $siswas = Siswa::all();
+            foreach ($siswas as $siswa) {
                 $idealMax = 0;
                 $idealMin = 0;
                 $matrixBobot = DB::table('topsis_bobots')
-                    ->where('siswa_id', '=', $karyawan->id)
+                    ->where('siswa_id', '=', $siswa->id)
                     ->get();
 
                 foreach ($matrixBobot as $bobot) {
@@ -481,10 +481,10 @@ class TopsisController extends Controller
                                 ->first();
 
         if (!$isexist) {
-         $karyawans = Siswa::get();
-            foreach ($karyawans as $karyawan) {
+         $siswas = Siswa::get();
+            foreach ($siswas as $siswa) {
                 $matrixJarak = DB::table('topsis_jaraks')
-                    ->where('siswa_id', '=', $karyawan->id)
+                    ->where('siswa_id', '=', $siswa->id)
                     ->get();
 
                 foreach ($matrixJarak as $jarak) {

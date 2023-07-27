@@ -1,7 +1,7 @@
 @extends('layouts.web.admin')
 
 @section('title')
-<title>Data Karyawan</title>
+<title>Data Siswa</title>
 @endsection
 
 @section('content')
@@ -32,7 +32,6 @@
     <div class="row">
         <div class="col-12">
             @if (count($normalisasis))
-
             <div class="card border-light">
                 <div class="card-header">
                     <h3>Topsis Normalisasi</h3>
@@ -62,7 +61,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Nama Karyawan</th>
+                                    <th scope="col">Nomor Induk Siswa Nasional</th>
+                                    <th scope="col">Nama Siswa</th>
 
                                     @foreach ($kriterias as $kriteria)
                                     <th scope="col">{{ $kriteria->name}}</th>
@@ -71,15 +71,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if ($karyawans)
+                                @if ($siswas)
 
-                                @foreach ($karyawans as $key => $karyawan)
+                                @foreach ($siswas as $key => $siswa)
 
                                 <tr>
                                     <th scope="row">{{ $key + 1 }}</th>
-                                    <td>{{ $karyawan->nama }}</td>
+                                    <td>{{ $siswa->nisn }}</td>
+                                    <td>{{ $siswa->nama }}</td>
 
-                                    @foreach ($karyawan->penilaian_normalisasis as $penilaian)
+                                    @foreach ($siswa->penilaian_normalisasis as $penilaian)
                                     @if ($penilaian['topsis_normalisasi'])
                                     <td>{{ round($penilaian['topsis_normalisasi'], 4)}}</td>
                                     @endif
@@ -103,10 +104,32 @@
                     </div>
                 </div>
             </div>
+            @else
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card card-block">
+                        <div class="card-title-block">
+                            <h1 class="title text-center"> DATA BELUM DIINPUT, SILAHKAN INPUT TERLEBIH DAHULU</h1>
+                        </div>
+                        <div class="head logo-sekolah">
+                            <img src="{{ asset('assets/img_asset/logo.png') }}" alt="LOGO SEKOLAH" class="center">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
             @endif
         </div>
     </div>
 </div>
+<style>
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 25%;
+    }
+    </style>
 @endsection
 @section('script')
 <script>

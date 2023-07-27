@@ -1,7 +1,7 @@
 @extends('layouts.web.admin')
 
 @section('title')
-<title>Data Karyawan</title>
+<title>Data siswa</title>
 @endsection
 
 @section('content')
@@ -62,7 +62,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Nama Karyawan</th>
+                                    <th scope="col">Nomor Induk Siswa Nasional</th>
+                                    <th scope="col">Nama siswa</th>
 
                                     @foreach ($kriterias as $kriteria)
                                     <th scope="col">{{ $kriteria->name}}</th>
@@ -71,15 +72,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if ($karyawans)
+                                @if ($siswas)
 
-                                @foreach ($karyawans as $key => $karyawan)
+                                @foreach ($siswas as $key => $siswa)
 
                                 <tr>
                                     <th scope="row">{{ $key + 1 }}</th>
-                                    <td>{{ $karyawan->nama }}</td>
+                                    <td>{{ $siswa->nisn }}</td>
+                                    <td>{{ $siswa->nama }}</td>
 
-                                    @foreach ($karyawan->penilaian_bobot as $penilaian)
+                                    @foreach ($siswa->penilaian_bobot as $penilaian)
                                     @if ($penilaian['topsis_bobot'])
                                     <td>{{ round($penilaian['topsis_bobot'], 4)}}</td>
                                     @endif

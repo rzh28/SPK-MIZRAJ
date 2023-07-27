@@ -1,7 +1,7 @@
 @extends('layouts.web.admin')
 
 @section('title')
-<title>Data Karyawan</title>
+<title>Data Siswa</title>
 @endsection
 
 @section('content')
@@ -64,22 +64,24 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Nama Karyawan</th>
+                                    <th scope="col">Nomor Induk Siswa Nasional</th>
+                                    <th scope="col">Nama siswa</th>
                                     <th scope="col">Ideal Max</th>
                                     <th scope="col">Ideal Min</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                @if ($karyawans)
+                                @if ($siswas)
 
-                                @foreach ($karyawans as $key => $karyawan)
+                                @foreach ($siswas as $key => $siswa)
 
                                 <tr>
                                     <th scope="row">{{ $key + 1 }}</th>
-                                    <td>{{ $karyawan->nama }}</td>
+                                    <td>{{ $siswa->nisn }}</td>
+                                    <td>{{ $siswa->nama }}</td>
 
-                                    @foreach ($karyawan->penilaian_jarak as $penilaian)
+                                    @foreach ($siswa->penilaian_jarak as $penilaian)
                                     @if ($penilaian->topsis_solusi_max || $penilaian->topsis_solusi_min )
                                     <td>{{ round($penilaian['topsis_solusi_max'], 7)}}</td>
                                     <td>{{ round($penilaian['topsis_solusi_min'], 5)}}</td>

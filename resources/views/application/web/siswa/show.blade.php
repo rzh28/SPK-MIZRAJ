@@ -102,6 +102,17 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="nisn">Nomor Induk Siswa Nasional</label>
+                                        <input type="text" class="form-control" name="nisn" id="nisn"
+                                            placeholder="Masukan Nomor Induk Siswa Nasional" value="{{ $siswas->nisn }}">
+
+                                        @error('nisn')
+                                            <div class="invalid-feedback" style="display: block !important;">{{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="nama">Nama Lengkap Siswa</label>
                                         <input type="text" class="form-control" name="nama" id="nama"
                                             placeholder="Masukan Nama Lengkap" value="{{ $siswas->nama }}">
