@@ -68,15 +68,15 @@ class TopsisController extends Controller
                     }
                 // kriteria 2 = tanggungan orang tua
                 } else if ($request->kriteria_id == 2) {
-                    if ($request->nilai >= 5) {
+                    if ($request->nilai_awal >= 5) {
                         $inisialisasi = 5;
-                    } elseif ($request->nilai >= 4 && $request->nilai <= 4) {
+                    } elseif ($request->nilai_awal >= 4) {
                         $inisialisasi = 4;
-                    } elseif ($request->nilai >= 2 && $request->nilai <= 3) {
+                    } elseif ($request->nilai_awal >= 3) {
                         $inisialisasi = 3;
-                    } elseif ($request->nilai >= 1 && $request->nilai <= 2) {
+                    } elseif ($request->nilai_awal >= 2) {
                         $inisialisasi = 2;
-                    } elseif ($request->nilai <= 1) {
+                    } elseif ($request->nilai_awal >= 0) {
                         $inisialisasi = 1;
                     }else{
                          return redirect()

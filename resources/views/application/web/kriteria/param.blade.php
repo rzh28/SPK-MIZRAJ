@@ -66,11 +66,11 @@
                                             PENGHASILAN ORANG TUA
                                         </td>
                                         <td>
-                                            <p>Lebih dari Rp 5.000.000</p>
-                                            <p>Rp. 3.000.000 - Rp 4.999.999</p>
-                                            <p>Rp 1.500.000- Rp 2.999.999</p>
+                                            <p>Kurang Dari Rp 800.000</p>
                                             <p>Rp 800.000 - Rp 1.499.999</p>
-                                            Kurang Dari Rp 800.000
+                                            <p>Rp 1.500.000- Rp 2.999.999</p>
+                                            <p>Rp. 3.000.000 - Rp 4.999.999</p>
+                                            Lebih dari Rp 5.000.000
                                         </td>
                                         <td>
                                             <p>5</p>
@@ -126,8 +126,8 @@
                                             KEHADIRAN
                                         </td>
                                         <td>
-                                            <p>80  - 100</p>
-                                            <p>60 - 79</p>
+                                            <p>81  - 100</p>
+                                            <p>60 - 80</p>
                                             <p>40 - 59</p>
                                             <p>20 - 39</p>
                                             1 - 19

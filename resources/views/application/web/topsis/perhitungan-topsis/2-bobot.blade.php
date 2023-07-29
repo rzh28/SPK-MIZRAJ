@@ -33,7 +33,7 @@
         <div class="col-12">
             @if (count($pembobotans))
 
-            <div class="card border-light">
+            <div class="card">
                 <div class="card-header">
                     <h3>Topsis Pembobotan</h3>
                 </div>
@@ -64,6 +64,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Nomor Induk Siswa Nasional</th>
                                     <th scope="col">Nama siswa</th>
+                                    <th scope="col">Kelas siswa</th>
 
                                     @foreach ($kriterias as $kriteria)
                                     <th scope="col">{{ $kriteria->name}}</th>
@@ -80,10 +81,11 @@
                                     <th scope="row">{{ $key + 1 }}</th>
                                     <td>{{ $siswa->nisn }}</td>
                                     <td>{{ $siswa->nama }}</td>
+                                    <td>{{ $siswa->kelas }}</td>
 
                                     @foreach ($siswa->penilaian_bobot as $penilaian)
                                     @if ($penilaian['topsis_bobot'])
-                                    <td>{{ round($penilaian['topsis_bobot'], 4)}}</td>
+                                    <td>{{ round($penilaian['topsis_bobot'], 5)}}</td>
                                     @endif
 
                                     @endforeach

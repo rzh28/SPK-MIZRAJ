@@ -35,7 +35,7 @@
         <div class="col-12">
             @if (count($jaraks))
 
-            <div class="card border-light">
+            <div class="card">
                 <div class="card-header">
                     <h3>Topsis Jarak Ideal Positive & Ideal Negative</h3>
                 </div>
@@ -66,6 +66,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Nomor Induk Siswa Nasional</th>
                                     <th scope="col">Nama siswa</th>
+                                    <th scope="col">Kelas siswa</th>
                                     <th scope="col">Ideal Max</th>
                                     <th scope="col">Ideal Min</th>
 
@@ -80,10 +81,11 @@
                                     <th scope="row">{{ $key + 1 }}</th>
                                     <td>{{ $siswa->nisn }}</td>
                                     <td>{{ $siswa->nama }}</td>
+                                    <td>{{ $siswa->kelas }}</td>
 
                                     @foreach ($siswa->penilaian_jarak as $penilaian)
                                     @if ($penilaian->topsis_solusi_max || $penilaian->topsis_solusi_min )
-                                    <td>{{ round($penilaian['topsis_solusi_max'], 7)}}</td>
+                                    <td>{{ round($penilaian['topsis_solusi_max'], 5)}}</td>
                                     <td>{{ round($penilaian['topsis_solusi_min'], 5)}}</td>
                                     @endif
 

@@ -32,7 +32,7 @@
     <div class="row">
         <div class="col-12">
             @if (count($normalisasis))
-            <div class="card border-light">
+            <div class="card">
                 <div class="card-header">
                     <h3>Topsis Normalisasi</h3>
                 </div>
@@ -63,6 +63,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Nomor Induk Siswa Nasional</th>
                                     <th scope="col">Nama Siswa</th>
+                                    <th scope="col">Kelas Siswa</th>
 
                                     @foreach ($kriterias as $kriteria)
                                     <th scope="col">{{ $kriteria->name}}</th>
@@ -79,10 +80,11 @@
                                     <th scope="row">{{ $key + 1 }}</th>
                                     <td>{{ $siswa->nisn }}</td>
                                     <td>{{ $siswa->nama }}</td>
+                                    <td>{{ $siswa->kelas }}</td>
 
                                     @foreach ($siswa->penilaian_normalisasis as $penilaian)
                                     @if ($penilaian['topsis_normalisasi'])
-                                    <td>{{ round($penilaian['topsis_normalisasi'], 4)}}</td>
+                                    <td>{{ round($penilaian['topsis_normalisasi'], 5)}}</td>
                                     @endif
 
                                     @endforeach

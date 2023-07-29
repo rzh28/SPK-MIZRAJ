@@ -59,9 +59,20 @@
             <!-- Column -->
 
             <div class="col-lg-4 col-xlg-3 col-md-5">
-                <center class="m-t-30"> <img src="{{ asset('images/' . $siswas->photos) }}" class="rounded-circle"
+                <center class="m-t-30">
+                    @if ($siswas->photos)
+                    <img src="{{ asset('images/' . $siswas->photos) }}" class="rounded-circle"
                         width="150" height="150" />
                     <h4 class="card-title m-t-10">{{ $siswas->nama }}</h4>
+                    @elseif ($siswas->jenis_kelamin == 1)
+                    <img src="{{asset('images/dummy.png')}}" class="rounded-circle"
+                        width="150" height="150" />
+                    <h4 class="card-title m-t-10">{{ $siswas->nama }}</h4>
+                    @else
+                    <img src="{{asset('images/dummy1.png')}}" class="rounded-circle"
+                        width="150" height="150" />
+                    <h4 class="card-title m-t-10">{{ $siswas->nama }}</h4>
+                    @endif
                 </center>
             </div>
             <!-- Column -->

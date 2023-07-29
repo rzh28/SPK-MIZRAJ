@@ -34,7 +34,7 @@
         <div class="col-12">
             @if (count($preferensis))
 
-            <div class="card border-light">
+            <div class="card">
                 <div class="card-header">
                     @if (Auth::user()->role_id == 1)
                     <h3>Topsis Prefrensi</h3>
@@ -69,6 +69,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Nomor Induk Siswa Nasional</th>
                                     <th scope="col">Nama siswa</th>
+                                    <th scope="col">Kelas siswa</th>
                                     <th scope="col">Preferensi</th>
 
                                 </tr>
@@ -82,6 +83,7 @@
                                     <th scope="row">{{ $key + 1 }}</th>
                                     <td>{{ $siswa->nisn }}</td>
                                     <td>{{ $siswa->nama }}</td>
+                                    <td>{{ $siswa->kelas }}</td>
 
                                     @foreach ($siswa->penilaian_preferensi as $penilaian)
                                     @if ($penilaian->topsis_preferensi)

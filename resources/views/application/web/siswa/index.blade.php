@@ -87,10 +87,14 @@
                                                 @if ($siswa->photos != null)
                                                     <img src=" {{ asset('images/' . $siswa->photos) }}" alt=""
                                                         style=" width:50px; height:50px; border-radius:100%;">
+                                                @elseif ($siswa->jenis_kelamin == 1)
+                                                    <img src="{{asset('images/dummy.png')}}" alt="img-broker"
+                                                        style="border-radius:100%; width:50px; height:50px;">
                                                 @else
-                                                    <img src="http://placehold.it/50x50" alt="img-broker"
-                                                        style="border-radius:100%;">
-                                                @endif
+                                                <img src="{{asset('images/dummy1.png')}}" alt="img-broker"
+                                                    style="border-radius:100%; width:50px; height:50px;">
+
+                                                        @endif
                                             </td>
                                             <td>
                                                 <a href="{{ route('admin.siswa.edit', $siswa->id) }}">
